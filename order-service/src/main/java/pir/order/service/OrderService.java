@@ -24,4 +24,9 @@ public class OrderService {
         orderRepository.deleteById(orderId);
         log.info("{}번 주문번호 삭제", orderId);
     }
+
+    public Long getProductId(Long orderId){
+        Order order = orderRepository.findById(orderId).orElseThrow(()->new IllegalArgumentException("주문번호가 없습니다."));
+        return order.getProductId();
+    }
 }
