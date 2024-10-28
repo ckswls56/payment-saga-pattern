@@ -14,7 +14,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final StockProducer stockProducer;
 
-    public void order(String productId){
+    public void order(Long productId){
         final Order order = new Order(productId);
         final Order newOrder = orderRepository.save(order);
         stockProducer.order(newOrder.getId());

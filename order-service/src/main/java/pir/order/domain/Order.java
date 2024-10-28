@@ -15,9 +15,9 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String productId;
+    private Long productId;
 
-    public Order(String productId) {
+    public Order(Long productId) {
         this.productId = productId;
     }
 }

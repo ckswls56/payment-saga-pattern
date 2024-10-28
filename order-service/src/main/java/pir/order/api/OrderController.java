@@ -12,7 +12,8 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/order")
-    public void order(@RequestParam String productId){
+    public void order(@RequestParam Long productId){
         orderService.order(productId);
     }
+
 }
