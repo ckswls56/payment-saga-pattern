@@ -18,6 +18,7 @@ public class OrderCreatedConsumer {
             stockService.decrease(orderId);
             stockService.payment(orderId);
         }catch (Exception e){
+            log.error("======== error : {} ======== ", e.getMessage());
             log.error("======== [Rollback] stock-rollback, orderId :{} ======== ", orderId);
             stockService.rollbackCreatedOrder(orderId);
         }
