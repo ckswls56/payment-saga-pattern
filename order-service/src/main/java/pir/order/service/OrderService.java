@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pir.order.domain.Order;
-import pir.order.domain.OrderRepository;
+import pir.order.repository.OrderRepository;
 import pir.order.producer.StockProducer;
 
 @Slf4j
