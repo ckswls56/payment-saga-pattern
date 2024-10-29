@@ -13,9 +13,15 @@ public class RollbackConsumer {
     private final StockService stockService;
 
     @KafkaListener(topics = "stock-rollback", groupId = "group-01")
-    public void rollbackDecreaseStock(Long orderId){
+    public void rollbackDecreaseStock(Long orderId) {
         log.error("======== [Rollback] stock-rollback, orderId :{} ======== ", orderId);
-        stockService.increase(orderId);
+
+        stockService.getProductIdByOrderService(orderId)
+                .subscribe(
+                        stockService::increase,
+                        error -> log.error("error : {}", error.getMessage())
+                );
+
         stockService.rollbackCreatedOrder(orderId);
     }
 

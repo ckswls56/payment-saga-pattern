@@ -15,7 +15,13 @@ public class OrderCreatedConsumer {
     @KafkaListener(topics = "order-create", groupId = "group-01")
     public void decrease(Long orderId){
         try {
-            stockService.decrease(orderId);
+
+            stockService.getProductIdByOrderService(orderId)
+                            .subscribe(
+                                    stockService::decrease,
+                                    error -> log.error("error : {}", error.getMessage())
+                            );
+
             stockService.payment(orderId);
         }catch (Exception e){
             log.error("======== error : {} ======== ", e.getMessage());

@@ -18,13 +18,13 @@ public class Stock {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "id", nullable = false, updatable = false, unique = true)
         private Long id;
-        @Column(name = "order_id", nullable = false)
-        private Long orderId;
+        @Column(name = "product_id", nullable = false)
+        private Long productId;
         @Column(name = "stock")
         private int stock;
 
-        public Stock(Long orderId, int stock) {
-            this.orderId = orderId;
+        public Stock(Long productId, int stock) {
+            this.productId = productId;
             this.stock = stock;
         }
         public void decrease(){
