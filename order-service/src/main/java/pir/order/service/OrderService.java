@@ -18,6 +18,8 @@ public class OrderService {
         final Order order = new Order(productId);
         final Order newOrder = orderRepository.save(order);
         stockProducer.order(newOrder.getId());
+        log.info("{}번 주문번호 생성", newOrder.getId());
+        log.info("{}번 상품 주문", productId);
     }
 
     public void delete(Long orderId){
